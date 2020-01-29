@@ -72,12 +72,10 @@ public class Model {
                 .collect(Collectors.joining());
         List<String> orderId = orderMap.entrySet().stream()
                 .filter(x -> customerId.equals(x.getValue().getCustomer())).map(x->x.getKey().toString()).collect(Collectors.toList());
-        //System.out.println("Orders för: " + customerId + " " + orderId);
         shopping_cartMap.forEach((k,v)-> {
             for(String s : orderId){
                 if(v.getOrderId() == Integer.parseInt(s)){
-                    orderList.add("ORDER ID: " + s + " " + shoes_Map.get(v.getOrderId()));
-                    //System.out.println("ORDER ID: " + s + " " + shoes_Map.get(v.getOrderId()));
+                    orderList.add(""+shoes_Map.get(v.getOrderId()));
                     }
                 }
             });
